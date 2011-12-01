@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  PaperHouseLite
+
+  Created by cod7ce on 11/10/11.
+  Copyright 2011 纸房子. All rights reserved.
+*/
+
+"about"         = "About Zhi Fang Zi";
+"home"          = "Go To Zhi Fang Zi Website";
+"Preferences"   = "Preferences";
+"update"        = "Check For Update...";
+"gallery"       = "Wallpaper Gallery";
+
+"set"           = "set";
+"download"      = "download";
+"fullview"      = "full view";
+"prev"          = "prev";
+"next"          = "next";
+
+"exit"          = "Exit";
+
+"notify_get"    = "Get data successfully";
+"notify_icon"   = "Click zhifangzi's status icon to operate";
+
+"notify_succ"   = "Save wallpaper successfully";
+"notify_save"   = "Saved wallpaper:";
+
+"notify_wall"   = "Set wallpaper successfully";
+"notify_set"    = "Set wallpaper:";
+
+"func_dir"      = "Choose Directory";
+
+"image_size"    = "size: ";
+
+

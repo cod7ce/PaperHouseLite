@@ -1,0 +1,88 @@
+// !$*UTF8*$!
+{
+	93495F011457930000C406FA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 93A1B7C814579440004ADE87 /* PaperHouseLite */;
+		activeTarget = 93495F091457930100C406FA /* PaperHouseLite */;
+		codeSenseManager = 93A1B7DC1457945D004ADE87 /* Code sense */;
+		executables = (
+			93A1B7C814579440004ADE87 /* PaperHouseLite */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					356,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 341283904;
+			PBXWorkspaceStateSaveDate = 341283904;
+		};
+		sourceControlManager = 93A1B7DB1457945D004ADE87 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	93495F091457930100C406FA /* PaperHouseLite */ = {
+		activeExec = 0;
+		executables = (
+			93A1B7C814579440004ADE87 /* PaperHouseLite */,
+		);
+	};
+	93A1B7C814579440004ADE87 /* PaperHouseLite */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = PaperHouseLite;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	93A1B7DB1457945D004ADE87 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	93A1B7DC1457945D004ADE87 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+}

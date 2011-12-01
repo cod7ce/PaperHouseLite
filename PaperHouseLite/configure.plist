@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>wpdirectory</key>
+	<string>~/Pictures/纸房子宽屏壁纸</string>
+	<key>downloadwp</key>
+	<string>NO</string>
+	<key>siftwp</key>
+	<string>YES</string>
+	<key>lanuchatlogin</key>
+	<string>YES</string>
+	<key>dataurl</key>
+	<string>http://www.zhifangzi.com/feed</string>
+	<key>firstlanuch</key>
+	<string>YES</string>
+	<key>needgrowl</key>
+	<string>YES</string>
+</dict>
+</plist>
