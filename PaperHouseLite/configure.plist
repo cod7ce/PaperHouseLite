@@ -11,7 +11,7 @@
 	<key>lanuchatlogin</key>
 	<string>YES</string>
 	<key>dataurl</key>
-	<string>http://www.zhifangzi.com/feed</string>
+	<string>http://pic.zhifangzi.com/feed</string>
 	<key>firstlanuch</key>
 	<string>YES</string>
 	<key>needgrowl</key>
