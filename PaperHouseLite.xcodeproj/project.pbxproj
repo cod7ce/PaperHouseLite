@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1F83B816E8AB900004E1DC /* HttpConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F83B716E8AB900004E1DC /* HttpConnectionManager.m */; };
 		930ACE49145A9116006F6814 /* configure.plist in Resources */ = {isa = PBXBuildFile; fileRef = 930ACE48145A9116006F6814 /* configure.plist */; };
 		930ACE52145AA5CE006F6814 /* PowerMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 930ACE50145AA5CE006F6814 /* PowerMenuItemView.m */; };
 		93495F0F1457930100C406FA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93495F0E1457930100C406FA /* Cocoa.framework */; };
@@ -15,7 +16,6 @@
 		93495F1F1457930100C406FA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93495F1D1457930100C406FA /* Credits.rtf */; };
 		93495F221457930100C406FA /* PaperHouseLiteAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93495F211457930100C406FA /* PaperHouseLiteAppDelegate.m */; };
 		93495F251457930100C406FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93495F231457930100C406FA /* MainMenu.xib */; };
-		934B8EE51460E51400811807 /* HttpConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 934B8EE41460E51400811807 /* HttpConnectionManager.m */; };
 		934F60AF1472053800AEF9D0 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 934F60A41472053800AEF9D0 /* NSObject+SBJSON.m */; };
 		934F60B01472053800AEF9D0 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 934F60A61472053800AEF9D0 /* NSString+SBJSON.m */; };
 		934F60B11472053800AEF9D0 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 934F60A81472053800AEF9D0 /* SBJSON.m */; };
@@ -81,6 +81,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3F1F83B616E8AB900004E1DC /* HttpConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpConnectionManager.h; sourceTree = "<group>"; };
+		3F1F83B716E8AB900004E1DC /* HttpConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpConnectionManager.m; sourceTree = "<group>"; };
 		930ACE48145A9116006F6814 /* configure.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = configure.plist; sourceTree = "<group>"; };
 		930ACE4F145AA5CD006F6814 /* PowerMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PowerMenuItemView.h; sourceTree = "<group>"; };
 		930ACE50145AA5CE006F6814 /* PowerMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PowerMenuItemView.m; sourceTree = "<group>"; };
@@ -97,8 +99,6 @@
 		93495F201457930100C406FA /* PaperHouseLiteAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaperHouseLiteAppDelegate.h; sourceTree = "<group>"; };
 		93495F211457930100C406FA /* PaperHouseLiteAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaperHouseLiteAppDelegate.m; sourceTree = "<group>"; };
 		93495F241457930100C406FA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		934B8EE31460E51400811807 /* HttpConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpConnectionManager.h; path = ../../EverydayWallpaper/EverydayWallpaper/HttpConnectionManager.h; sourceTree = "<group>"; };
-		934B8EE41460E51400811807 /* HttpConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpConnectionManager.m; path = ../../EverydayWallpaper/EverydayWallpaper/HttpConnectionManager.m; sourceTree = "<group>"; };
 		934F60A21472053800AEF9D0 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		934F60A31472053800AEF9D0 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		934F60A41472053800AEF9D0 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -338,6 +338,8 @@
 				930ACE4F145AA5CD006F6814 /* PowerMenuItemView.h */,
 				930ACE50145AA5CE006F6814 /* PowerMenuItemView.m */,
 				93D8F19F147359E90082E17B /* PHImageView.h */,
+				3F1F83B616E8AB900004E1DC /* HttpConnectionManager.h */,
+				3F1F83B716E8AB900004E1DC /* HttpConnectionManager.m */,
 				93D8F1A0147359E90082E17B /* PHImageView.m */,
 				938DEF36145F8BF200F40DAE /* PHDocmentImage.h */,
 				938DEF37145F8BF200F40DAE /* PHDocmentImage.m */,
@@ -347,8 +349,6 @@
 				938DEF3A145F94A300F40DAE /* RegexKitLite.m */,
 				939DDA87145E6AD6001DCE48 /* PHTool.h */,
 				939DDA88145E6AD6001DCE48 /* PHTool.m */,
-				934B8EE31460E51400811807 /* HttpConnectionManager.h */,
-				934B8EE41460E51400811807 /* HttpConnectionManager.m */,
 			);
 			name = class;
 			sourceTree = "<group>";
@@ -472,7 +472,6 @@
 				939DDA89145E6AD6001DCE48 /* PHTool.m in Sources */,
 				938DEF38145F8BF200F40DAE /* PHDocmentImage.m in Sources */,
 				938DEF3B145F94A300F40DAE /* RegexKitLite.m in Sources */,
-				934B8EE51460E51400811807 /* HttpConnectionManager.m in Sources */,
 				934F60AF1472053800AEF9D0 /* NSObject+SBJSON.m in Sources */,
 				934F60B01472053800AEF9D0 /* NSString+SBJSON.m in Sources */,
 				934F60B11472053800AEF9D0 /* SBJSON.m in Sources */,
@@ -489,6 +488,7 @@
 				939ACF4B1484C3AF001EE873 /* MBCoverFlowScroller.m in Sources */,
 				939ACF4C1484C3AF001EE873 /* MBCoverFlowView.m in Sources */,
 				939ACF4E1484C3AF001EE873 /* NSImage+MBCoverFlowAdditions.m in Sources */,
+				3F1F83B816E8AB900004E1DC /* HttpConnectionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
