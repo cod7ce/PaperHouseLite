@@ -25,15 +25,16 @@ typedef enum {
 
 +(NSMutableArray *)parseToDocumentImageWithDesc:(NSString *)desc;
 
-+(BOOL)checkPicturePathWithCellName:(NSString *)cellName;
++(BOOL)checkPicturePath;
 
 +(void)addAppAsLoginItem;
 +(void)deleteAppFromLoginItem;
 +(void)downloadWPWithPath:(NSString *)path AndWeatherSwif:(bool)swif;
 + (NSDictionary *)getDataWithURL:(NSString *)url;
-+(void)shareImageWithDocumentImage:(PHDocmentImage *)docImage Title:(NSString *)title Type:(ShareType)type;
++(void)shareImageWithDocumentImage:(PHDocmentImage *)docImage Type:(ShareType)type;
 
 +(NSString *)getURLStringWithString:(NSString *)os;
++(NSString *) getFileNameURLWithDocumentImage:(PHDocmentImage *)documentImage;
 
 +(void)setWallpaperWithPath:(NSString *)path AndName:(NSString *)name;
 @end

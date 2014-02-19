@@ -9,16 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface PHDocmentImage : NSObject
-{
-    NSString *fullImageSrc;
-    NSString *smallImageSrc;
-    NSString *originalImageSrc;
-}
 
-@property (nonatomic,retain) NSString *fullImageSrc;
-@property (nonatomic,retain) NSString *smallImageSrc;
-@property (nonatomic,retain) NSString *originalImageSrc;
+@property (nonatomic,retain) NSString *author;
+@property (nonatomic,retain) NSString *copyright;
+@property (nonatomic,retain) NSString *name;
+@property (nonatomic,retain) NSString *url;
 
-- (id)initWithFullImageSrc:(NSString *)full SmallImageSrc:(NSString *)small OriginalImageSrc:(NSString *)original;
+- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url;
+
+- (void)setProperties:(NSDictionary *)properties;
 
 @end

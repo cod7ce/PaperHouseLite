@@ -10,8 +10,6 @@
 
 @implementation PHDocmentImage
 
-@synthesize fullImageSrc, smallImageSrc, originalImageSrc;
-
 - (id)init
 {
     self = [super init];
@@ -21,17 +19,24 @@
     return self;
 }
 
-- (id)initWithFullImageSrc:(NSString *)full SmallImageSrc:(NSString *)small OriginalImageSrc:(NSString *)original
+- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url
 {
     self = [super init];
     if (self) {
-        self.fullImageSrc = full;
-        self.smallImageSrc = small;
-        self.originalImageSrc = original;
+        self.author = author;
+        self.name = name;
+        self.url = url;
+        self.copyright = copyright;
     } 
     return self;
 }
 
-
+- (void)setProperties:(NSDictionary *)properties
+{
+    self.author = [properties objectForKey:@"author"];
+    self.name = [properties objectForKey:@"name"];
+    self.url = [properties objectForKey:@"url"];
+    self.copyright = [properties objectForKey:@"copyright"];
+}
 
 @end

@@ -37,6 +37,7 @@
 - (void)initProporty;
 
 -(NSURL *)getFeed;
+-(NSString *)getFeedStr;
 -(NSString *)getPicPath;
 -(bool)weatherDefaultWPDirectory;
 -(bool)weatherLaunchAtLogin;

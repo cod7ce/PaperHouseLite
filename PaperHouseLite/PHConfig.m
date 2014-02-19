@@ -57,6 +57,12 @@ static PHConfig *sharedAC;
     return [NSURL URLWithString:self.dataURL];
 }
 
+// 获取数据来源url
+-(NSString *)getFeedStr
+{
+    return self.dataURL;
+}
+
 // 获取图片存放路径
 -(NSString *)getPicPath
 {

@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <Growl/Growl.h>
 #import "PHImageView.h"
+#import "ASIFormDataRequest.h"
+#import "PHDocmentImage.h"
 
 typedef enum {
     Item,
@@ -17,10 +19,9 @@ typedef enum {
     NoUse
 } ElementName;
 
-@interface PowerMenuItemView : NSViewController <NSMenuDelegate, NSXMLParserDelegate, NSComboBoxDelegate, GrowlApplicationBridgeDelegate>
+@interface PowerMenuItemView : NSViewController <NSMenuDelegate, ASIHTTPRequestDelegate, GrowlApplicationBridgeDelegate>
 {
     PHImageView *imageCell;
-    NSComboBox *comboBox;
     NSProgressIndicator *indicator;
  /*   
     NSButton *set;
@@ -33,18 +34,18 @@ typedef enum {
     
     IBOutlet NSView *waitView;
     IBOutlet NSProgressIndicator *waitIndicator;
-    NSUInteger cellIndex;
-    NSUInteger imageIndex;
+    NSUInteger count;
+    NSUInteger page;
     NSMutableArray *allImage;
     NSString *cellName;
 }
 
 @property (retain,nonatomic) IBOutlet PHImageView *imageCell;
-@property (retain,nonatomic) IBOutlet NSComboBox *comboBox;
 @property (retain,nonatomic) IBOutlet NSProgressIndicator *indicator;
 
 @property (retain,nonatomic) IBOutlet NSView *shareView;
 
+@property (retain,nonatomic) PHDocmentImage *documentImage;
  /* 
 @property (retain,nonatomic) IBOutlet NSButton *set;
 @property (retain,nonatomic) IBOutlet NSButton *download;
@@ -52,8 +53,8 @@ typedef enum {
 @property (retain,nonatomic) IBOutlet NSButton *prev;
 @property (retain,nonatomic) IBOutlet NSButton *next;
 */
-@property (nonatomic) NSUInteger cellIndex;
-@property (nonatomic) NSUInteger imageIndex;
+@property (nonatomic) NSUInteger count;
+@property (nonatomic) NSUInteger page;
 @property (nonatomic,retain) NSMutableArray *allImage;
 @property (nonatomic,retain) NSString *cellName;
 //@property (retain,nonatomic) IBOutlet NSButton *setWallPaper;
@@ -68,8 +69,6 @@ typedef enum {
 
 -(void)getDataWithNewThread;
 -(void)changeShareViewSize;
--(void) setImageCellWithCellIndex:(NSUInteger)index1 AndImageIndex:(NSUInteger)index2;
--(NSString *) getFileNameURLWithImageSrc:(NSString *)imageSrc;
 -(void) toggleIndicator;
 
 @end

@@ -57,10 +57,10 @@
 
 
 // 检查图片存放目录是否存在，没有则创建
-+(BOOL)checkPicturePathWithCellName:(NSString *)cellName
++(BOOL)checkPicturePath
 {
     BOOL flag = TRUE;
-    if(![[NSFileManager defaultManager] createDirectoryAtPath:[[NSString stringWithFormat:@"%@/%@",[[PHConfig sharedPHConfigure] getPicPath], cellName] stringByExpandingTildeInPath]
+    if(![[NSFileManager defaultManager] createDirectoryAtPath:[[[PHConfig sharedPHConfigure] getPicPath] stringByExpandingTildeInPath]
                                   withIntermediateDirectories:YES 
                                                    attributes:nil 
                                                         error:nil])
@@ -71,6 +71,17 @@
         
 }
 
+// 获取图片的存储位置
++(NSString *) getFileNameURLWithDocumentImage:(PHDocmentImage *)documentImage
+{
+    NSArray*  strs			= [documentImage.url componentsSeparatedByString:@"/"];
+    NSString* fname         = [strs objectAtIndex:[strs count] - 1];
+    NSArray*  fstrs			= [fname componentsSeparatedByString:@"."];
+    NSString* extend         = [fstrs objectAtIndex:[fstrs count] - 1];
+    
+    NSString* saveFileURL   = [[NSString stringWithFormat:@"%@/%@.%@", [[PHConfig sharedPHConfigure] getPicPath], documentImage.name, extend] stringByExpandingTildeInPath];
+    return saveFileURL;
+}
 
 // 将项目添加到启动项里
 +(void)addAppAsLoginItem
@@ -160,12 +171,12 @@
 	return josnResult;
 }
 
-+(void)shareImageWithDocumentImage:(PHDocmentImage *)docImage Title:(NSString *)title Type:(ShareType)type
++(void)shareImageWithDocumentImage:(PHDocmentImage *)docImage Type:(ShareType)type
 {
     NSString *link;
-    NSString *url   = docImage.originalImageSrc;
-    NSString *pic   = [docImage.smallImageSrc stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    title           = [title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *url   = docImage.copyright;
+    NSString *pic   = [docImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *title = [docImage.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *site  = [@" - 房子宽屏壁纸[每天都有新壁纸，没有都有新心情]" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *app   = [@"纸房子宽屏壁纸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     switch(type)
