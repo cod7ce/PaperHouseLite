@@ -9,12 +9,12 @@
 #import <AppKit/AppKit.h>
 
 @interface PHImageView : NSImageView
-{
-    NSView *shareView;
-}
 
 @property (retain,nonatomic) NSView *shareView;
+@property (retain,nonatomic) NSButton *prevBtn;
+@property (retain,nonatomic) NSButton *nextBtn;
 
 - (void)setTrackingRect:(NSRect)rect;
+- (void)setShareView:(NSView *)shareView PrevBtn:(NSButton *)prevBtn NextBtn:(NSButton *)nextBtn;
 
 @end

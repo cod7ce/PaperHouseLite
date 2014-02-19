@@ -46,10 +46,11 @@ NSString *fullDesc = @"";
 	[GrowlApplicationBridge reregisterGrowlNotifications];
     [imageCell setTrackingRect:imageCell.frame];
     [shareView setAlphaValue:0.0f];
-    [imageCell setShareView:shareView];
+    [self.prevBtn setAlphaValue:0.0f];
+    [self.nextBtn setAlphaValue:0.0f];
+    [imageCell setShareView:shareView PrevBtn:self.prevBtn NextBtn:self.nextBtn];
     NSLog(@"加载数据");
-    // 打开一个新的线程去执行数据的获取
-    //[NSThread detachNewThreadSelector:@selector(getDataWithNewThread) toTarget:self withObject:nil];
+    
     [self getWallpaper:1];
 }
 
@@ -212,6 +213,7 @@ NSString *fullDesc = @"";
         self.count = [[result objectForKey:@"count"] integerValue];
         [self.documentImage setProperties:[result objectForKey:@"wallpaper"]];
         
+        // 打开一个新的线程去执行数据的获取
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQueue = dispatch_get_main_queue();
         dispatch_async(queue, ^{

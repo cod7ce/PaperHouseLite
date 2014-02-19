@@ -44,6 +44,8 @@ typedef enum {
 @property (retain,nonatomic) IBOutlet NSProgressIndicator *indicator;
 
 @property (retain,nonatomic) IBOutlet NSView *shareView;
+@property (assign) IBOutlet NSButton *prevBtn;
+@property (assign) IBOutlet NSButton *nextBtn;
 
 @property (retain,nonatomic) PHDocmentImage *documentImage;
  /* 
