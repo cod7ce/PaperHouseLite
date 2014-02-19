@@ -88,20 +88,16 @@ NSString *fullDesc = @"";
 // 通过传入参数设置等待indicator的状态
 -(void) toggleIndicator
 {
-    if(mainThread == YES)
+    if([indicator isHidden])
     {
-        if([indicator isHidden])
-        {
-            [indicator setHidden:FALSE];
-            [indicator startAnimation:nil];
-        }
-        else
-        {
-            [indicator stopAnimation:nil];
-            [indicator setHidden:TRUE];
-        }
+        [indicator setHidden:FALSE];
+        [indicator startAnimation:nil];
     }
-    
+    else
+    {
+        [indicator stopAnimation:nil];
+        [indicator setHidden:TRUE];
+    }
 }
 // 设置成桌面
 -(IBAction) setWallPaper:(id)sender
@@ -161,14 +157,14 @@ NSString *fullDesc = @"";
 // 上一张图片
 -(IBAction) prevImage:(id)sender
 {
-    NSInteger cpage = self.page == 1 ? 1 : self.page - 1;
+    NSInteger cpage = self.page == 1 ? self.count : self.page - 1;
     [self getWallpaper:cpage];
 }
 
 // 下一张图片
 -(IBAction) nextImage:(id)sender
 {
-    NSInteger cpage = self.page == self.count ? self.count : self.page + 1;
+    NSInteger cpage = self.page == self.count ? 1 : self.page + 1;
     [self getWallpaper:cpage];
 }
 
@@ -216,21 +212,25 @@ NSString *fullDesc = @"";
         self.count = [[result objectForKey:@"count"] integerValue];
         [self.documentImage setProperties:[result objectForKey:@"wallpaper"]];
         
-        NSURL *url = [NSURL URLWithString: [self.documentImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        NSImage *imgs = [[NSImage alloc] initWithContentsOfURL:url];
-        [imageCell setImage:imgs];
-        [imgs release];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_queue_t mainQueue = dispatch_get_main_queue();
+        dispatch_async(queue, ^{
+            NSURL *url = [NSURL URLWithString: [self.documentImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            NSImage *img = [[NSImage alloc] initWithContentsOfURL:url];
+            dispatch_sync(mainQueue, ^{
+                [self.imageCell setImage:img];
+                if (waitIndicator)
+                {
+                    [[waitView animator] setAlphaValue:0.0];
+                    waitIndicator = NULL;
+                    [waitView removeFromSuperview];
+                    [self changeShareViewSize];
+                }
+                [self toggleIndicator];
+                [img release];
+            });
+        });
     }
-    
-    if (waitIndicator)
-    {
-        [[waitView animator] setAlphaValue:0.0];
-        waitIndicator = NULL;
-        [waitView removeFromSuperview];
-        [self changeShareViewSize];
-    }
-    
-    [self toggleIndicator];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -362,8 +362,8 @@ NSString *fullDesc = @"";
 {
     NSRect rect = [shareView frame];
     rect.origin.y += rect.size.height;
-    rect.origin.y -= 158.0;
-    rect.size.height = 158.0;
+    rect.origin.y -= 205.0;
+    rect.size.height = 205.0;
     rect.size.width  = 304.0;
     [[shareView animator] setFrame:rect];
     [[self.view animator] setFrame:rect];
