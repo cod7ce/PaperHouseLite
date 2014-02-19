@@ -14,15 +14,8 @@
 
 @implementation PowerMenuItemView
 
-ElementName en;
-Boolean itemFlag;
-Boolean itemStartFlag;
-Boolean mainThread;
-NSString *fullTitle = @"";
-NSString *fullDesc = @"";
-
 @synthesize imageCell,indicator;
-@synthesize page,count,allImage,cellName;
+@synthesize page,count;
 @synthesize shareView;
 //@synthesize set,download,fullView,prev,next;
 
@@ -34,7 +27,6 @@ NSString *fullDesc = @"";
         self.page = 1;
         self.count = 1;
         self.documentImage = [[PHDocmentImage alloc] init];
-        allImage = [[NSMutableArray alloc] initWithCapacity:5000];
     }
     return self;
 }
@@ -49,6 +41,7 @@ NSString *fullDesc = @"";
     [self.prevBtn setAlphaValue:0.0f];
     [self.nextBtn setAlphaValue:0.0f];
     [imageCell setShareView:shareView PrevBtn:self.prevBtn NextBtn:self.nextBtn];
+    [self.imageCell setImageFrameStyle:NSImageFrameNone];
     NSLog(@"加载数据");
     
     [self getWallpaper:1];
@@ -64,15 +57,6 @@ NSString *fullDesc = @"";
                             afterDelay:0.0
                                inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
     }
-}
-
-// 在新的线程中获取数据，并结束线程
--(void)getDataWithNewThread
-{
-    mainThread = NO;
-    [PHTool getConfigWithURL:[[PHConfig sharedPHConfigure] getFeed] XMLDeletgate:self];
-    mainThread = YES;
-    [NSThread exit];
 }
 
 -(void)getWallpaper:(NSInteger)cpage
@@ -364,8 +348,8 @@ NSString *fullDesc = @"";
 {
     NSRect rect = [shareView frame];
     rect.origin.y += rect.size.height;
-    rect.origin.y -= 205.0;
-    rect.size.height = 205.0;
+    rect.origin.y -= 200.0;
+    rect.size.height = 200.0;
     rect.size.width  = 304.0;
     [[shareView animator] setFrame:rect];
     [[self.view animator] setFrame:rect];

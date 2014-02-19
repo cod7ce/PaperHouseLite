@@ -36,8 +36,6 @@ typedef enum {
     IBOutlet NSProgressIndicator *waitIndicator;
     NSUInteger count;
     NSUInteger page;
-    NSMutableArray *allImage;
-    NSString *cellName;
 }
 
 @property (retain,nonatomic) IBOutlet PHImageView *imageCell;
@@ -57,8 +55,6 @@ typedef enum {
 */
 @property (nonatomic) NSUInteger count;
 @property (nonatomic) NSUInteger page;
-@property (nonatomic,retain) NSMutableArray *allImage;
-@property (nonatomic,retain) NSString *cellName;
 //@property (retain,nonatomic) IBOutlet NSButton *setWallPaper;
 
 -(IBAction) nextImage:(id)sender;
@@ -69,7 +65,6 @@ typedef enum {
 
 -(IBAction) shareSNSAction:(id)sender;
 
--(void)getDataWithNewThread;
 -(void)changeShareViewSize;
 -(void) toggleIndicator;
 
