@@ -177,8 +177,8 @@
     NSString *url   = docImage.copyright;
     NSString *pic   = [docImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSString *title = [docImage.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *site  = [@" - 房子宽屏壁纸[每天都有新壁纸，没有都有新心情]" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *app   = [@"纸房子宽屏壁纸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *site  = [@" - 纸房子每日壁纸[每天都有新壁纸，没有都有新心情]" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *app   = [@"纸房子每日壁纸" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     switch(type)
     {
         case sina:

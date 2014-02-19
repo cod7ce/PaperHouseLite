@@ -36,7 +36,7 @@
     self.author = [properties objectForKey:@"author"];
     self.name = [properties objectForKey:@"name"];
     self.url = [properties objectForKey:@"url"];
-    self.copyright = [properties objectForKey:@"copyright"];
+    self.copyright = [properties objectForKey:@"copyright_link"];
 }
 
 @end
