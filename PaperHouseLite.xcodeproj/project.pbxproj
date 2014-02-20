@@ -90,6 +90,9 @@
 		E902E95F18B474D5003C5E6C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E902E95E18B474D5003C5E6C /* WebKit.framework */; };
 		E902E96118B474F2003C5E6C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E902E96018B474F2003C5E6C /* Security.framework */; };
 		E902E96318B47899003C5E6C /* libtidy.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E902E96218B47899003C5E6C /* libtidy.dylib */; };
+		E97864AB18B5F864006FB1BE /* arrows-left.png in Resources */ = {isa = PBXBuildFile; fileRef = E97864A918B5F864006FB1BE /* arrows-left.png */; };
+		E97864AC18B5F864006FB1BE /* arrows-right.png in Resources */ = {isa = PBXBuildFile; fileRef = E97864AA18B5F864006FB1BE /* arrows-right.png */; };
+		E97864AE18B5FDE9006FB1BE /* highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = E97864AD18B5FDE9006FB1BE /* highlight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -252,6 +255,9 @@
 		E902E95E18B474D5003C5E6C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E902E96018B474F2003C5E6C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		E902E96218B47899003C5E6C /* libtidy.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libtidy.dylib; path = usr/lib/libtidy.dylib; sourceTree = SDKROOT; };
+		E97864A918B5F864006FB1BE /* arrows-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-left.png"; sourceTree = "<group>"; };
+		E97864AA18B5F864006FB1BE /* arrows-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrows-right.png"; sourceTree = "<group>"; };
+		E97864AD18B5FDE9006FB1BE /* highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highlight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,9 @@
 		930ACE4A145A9288006F6814 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E97864AD18B5FDE9006FB1BE /* highlight.png */,
+				E97864A918B5F864006FB1BE /* arrows-left.png */,
+				E97864AA18B5F864006FB1BE /* arrows-right.png */,
 				93A2B4B3148658B500206C27 /* menubgsmall_zh.png */,
 				93A2B4B11486588B00206C27 /* menubgsmall_en.png */,
 				93ACC675147B462400AD03E8 /* glossy.png */,
@@ -609,6 +618,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E97864AB18B5F864006FB1BE /* arrows-left.png in Resources */,
 				93495F191457930100C406FA /* InfoPlist.strings in Resources */,
 				93495F1F1457930100C406FA /* Credits.rtf in Resources */,
 				93495F251457930100C406FA /* MainMenu.xib in Resources */,
@@ -627,10 +637,12 @@
 				93D8F19E1473557E0082E17B /* toolbarbg.png in Resources */,
 				93E81EBE1474D7510002D87E /* net163.png in Resources */,
 				9381725214760EE7005D8226 /* PHImageGallery.xib in Resources */,
+				E97864AC18B5F864006FB1BE /* arrows-right.png in Resources */,
 				9351DE17147A2B850053C590 /* background.jpg in Resources */,
 				9351DE19147A2BEF0053C590 /* browserbg.jpg in Resources */,
 				93ACC678147B462400AD03E8 /* glossy.png in Resources */,
 				93ACC679147B462400AD03E8 /* metal_background.tif in Resources */,
+				E97864AE18B5FDE9006FB1BE /* highlight.png in Resources */,
 				93ACC67A147B462400AD03E8 /* pin.tiff in Resources */,
 				93A2B4B21486588B00206C27 /* menubgsmall_en.png in Resources */,
 				93A2B4B4148658B500206C27 /* menubgsmall_zh.png in Resources */,
