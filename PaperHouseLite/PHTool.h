@@ -21,8 +21,6 @@ typedef enum {
 
 @interface PHTool : NSObject
 
-+(void)getConfigWithURL:(NSURL *)url XMLDeletgate:(PowerMenuItemView *)xmlDelegate;
-
 +(NSMutableArray *)parseToDocumentImageWithDesc:(NSString *)desc;
 
 +(BOOL)checkPicturePath;

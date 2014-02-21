@@ -16,8 +16,6 @@
 
 @synthesize imageCell,indicator;
 @synthesize page,count;
-@synthesize shareView;
-//@synthesize set,download,fullView,prev,next;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,29 +32,13 @@
 - (void)loadView
 {
     [super loadView];
-    [GrowlApplicationBridge setGrowlDelegate:self];
-	[GrowlApplicationBridge reregisterGrowlNotifications];
     [imageCell setTrackingRect:imageCell.frame];
-    [shareView setAlphaValue:0.0f];
-    [self.prevBtn setAlphaValue:0.0f];
-    [self.nextBtn setAlphaValue:0.0f];
-    [imageCell setShareView:shareView PrevBtn:self.prevBtn NextBtn:self.nextBtn];
+    [self.toolView setAlphaValue:0.0f];
+    imageCell.toolView = self.toolView;
     [self.imageCell setImageFrameStyle:NSImageFrameNone];
     NSLog(@"加载数据");
     
     [self getWallpaper:1];
-}
-
-// 当数据加载时，menu打开就执行waitIndicator的效果
-- (void)menuWillOpen:(NSMenu *)menu
-{
-    if (waitIndicator != NULL) 
-    {
-        [waitIndicator performSelector:@selector(startAnimation:)
-                            withObject:self
-                            afterDelay:0.0
-                               inModes:[NSArray arrayWithObject:NSEventTrackingRunLoopMode]];
-    }
 }
 
 -(void)getWallpaper:(NSInteger)cpage
@@ -182,6 +164,11 @@
     [PHTool shareImageWithDocumentImage:self.documentImage Type:shareType];
 }
 
+- (IBAction)howToUseAction:(id)sender
+{
+    [sender removeFromSuperview];
+}
+
 #pragma mark - ASIHttpRequestDelegate
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
@@ -205,13 +192,8 @@
             NSImage *img = [[NSImage alloc] initWithContentsOfURL:url];
             dispatch_sync(mainQueue, ^{
                 [self.imageCell setImage:img];
-                if (waitIndicator)
-                {
-                    [[waitView animator] setAlphaValue:0.0];
-                    waitIndicator = NULL;
-                    [waitView removeFromSuperview];
+
                     [self changeShareViewSize];
-                }
                 [self toggleIndicator];
                 [img release];
             });
@@ -346,25 +328,7 @@
 // menuitem的resize
 -(void)changeShareViewSize
 {
-    NSRect rect = [shareView frame];
-    rect.origin.y += rect.size.height;
-    rect.origin.y -= 200.0;
-    rect.size.height = 200.0;
-    rect.size.width  = 304.0;
-    [[shareView animator] setFrame:rect];
-    [[self.view animator] setFrame:rect];
-}
-
-
-// 注册growl的展示方法
-- (NSDictionary *) registrationDictionaryForGrowl
-{
-	NSArray *notifications = [NSArray arrayWithObject: @"StandardReminder"];
-	NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
-						  notifications, GROWL_NOTIFICATIONS_ALL,
-						  notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
-	
-	return dict;
+    
 }
 
 @end

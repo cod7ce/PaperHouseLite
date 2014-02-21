@@ -13,20 +13,6 @@
 
 @implementation PHTool
 
-// 获取xml内容，并将代理提交给本类
-+(void)getConfigWithURL:(NSURL *)url XMLDeletgate:(PowerMenuItemView *)xmlDelegate
-{
-	
-	NSData *xmlData = [NSData dataWithContentsOfURL:url];
-                       
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
-	[parser setDelegate:xmlDelegate];
-	
-	[parser parse];
-	
-	[parser release];
-}
-
 // 解析参数样式：<a href="a"><img src="c" /></a> ... <a href="..."><img src="..." /></a>
 // 将a、b提取出来，通过b构造c，c为fullimagesrc
 // 返回 PHDocumentImage 的对象数组
@@ -221,13 +207,7 @@
     [[NSWorkspace sharedWorkspace] setDesktopImageURL:localImageURL forScreen:[NSScreen mainScreen] options:nil error:&error];
     if([[PHConfig sharedPHConfigure] weatherNeedGrowl])
     {
-        [GrowlApplicationBridge notifyWithTitle:NSLocalizedString(@"notify_wall", nil)
-                                    description:[NSString stringWithFormat: @"%@%@", NSLocalizedString(@"notify_set", nil), name]
-                               notificationName:@"StandardReminder"
-                                       iconData:nil
-                                       priority:1
-                                       isSticky:NO
-                                   clickContext:@"test"];
+#pragma mark 加入通知中心
     }
 }
 

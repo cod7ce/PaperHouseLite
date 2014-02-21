@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Growl/Growl.h>
 #import "PHImageView.h"
 #import "ASIFormDataRequest.h"
 #import "PHDocmentImage.h"
@@ -19,7 +18,7 @@ typedef enum {
     NoUse
 } ElementName;
 
-@interface PowerMenuItemView : NSViewController <NSMenuDelegate, ASIHTTPRequestDelegate, GrowlApplicationBridgeDelegate>
+@interface PowerMenuItemView : NSViewController <NSMenuDelegate, ASIHTTPRequestDelegate>
 {
     PHImageView *imageCell;
     NSProgressIndicator *indicator;
@@ -29,11 +28,8 @@ typedef enum {
     NSButton *fullView;
     NSButton *prev;
     NSButton *next;
-  */  
-    NSView *shareView;
+  */
     
-    IBOutlet NSView *waitView;
-    IBOutlet NSProgressIndicator *waitIndicator;
     NSUInteger count;
     NSUInteger page;
 }
@@ -41,18 +37,11 @@ typedef enum {
 @property (retain,nonatomic) IBOutlet PHImageView *imageCell;
 @property (retain,nonatomic) IBOutlet NSProgressIndicator *indicator;
 
-@property (retain,nonatomic) IBOutlet NSView *shareView;
+@property (retain,nonatomic) IBOutlet NSView *toolView;
 @property (assign) IBOutlet NSButton *prevBtn;
 @property (assign) IBOutlet NSButton *nextBtn;
 
 @property (retain,nonatomic) PHDocmentImage *documentImage;
- /* 
-@property (retain,nonatomic) IBOutlet NSButton *set;
-@property (retain,nonatomic) IBOutlet NSButton *download;
-@property (retain,nonatomic) IBOutlet NSButton *fullView;
-@property (retain,nonatomic) IBOutlet NSButton *prev;
-@property (retain,nonatomic) IBOutlet NSButton *next;
-*/
 @property (nonatomic) NSUInteger count;
 @property (nonatomic) NSUInteger page;
 //@property (retain,nonatomic) IBOutlet NSButton *setWallPaper;
@@ -64,6 +53,7 @@ typedef enum {
 -(IBAction) setWallPaper:(id)sender;
 
 -(IBAction) shareSNSAction:(id)sender;
+- (IBAction)howToUseAction:(id)sender;
 
 -(void)changeShareViewSize;
 -(void) toggleIndicator;

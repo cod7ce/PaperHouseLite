@@ -10,11 +10,9 @@
 
 @interface PHImageView : NSImageView
 
-@property (retain,nonatomic) NSView *shareView;
-@property (retain,nonatomic) NSButton *prevBtn;
-@property (retain,nonatomic) NSButton *nextBtn;
+@property (retain,nonatomic) NSView *toolView;
 
 - (void)setTrackingRect:(NSRect)rect;
-- (void)setShareView:(NSView *)shareView PrevBtn:(NSButton *)prevBtn NextBtn:(NSButton *)nextBtn;
+- (void)setToolView:(NSView *)toolView;
 
 @end

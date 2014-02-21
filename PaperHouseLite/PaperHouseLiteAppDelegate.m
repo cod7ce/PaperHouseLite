@@ -7,33 +7,73 @@
 //
 
 #import "PaperHouseLiteAppDelegate.h"
-#import "PowerMenuItemView.h"
 #import "PHImageGallery.h"
 #import "PHConfig.h"
 #import "PHTool.h"
 
 @implementation PaperHouseLiteAppDelegate
 
-@synthesize window, theItem;
+@synthesize window;
 @synthesize checkLogin,autosetWP,swifWP,selfPath,selfPathRadios,checkUpdateItem,growl;
+
+#pragma mark -
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
     if([[PHConfig sharedPHConfigure] weatherFirstLaunch])
     {
         [PHTool addAppAsLoginItem];
         [[PHConfig sharedPHConfigure] sayByeByeForFirstLaunch];
     }
     [self initPreferencePenalWithConfigFile];
-    [self activateStatusMenu];
+    
+    self.menubarController = [[MenubarController alloc] init];
 }
 
+- (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
+{
+    // Explicitly remove the icon from the menu bar
+    self.menubarController = nil;
+    return NSTerminateNow;
+}
+
+#pragma mark Drop Down Menu 部分
+
+// Actions
+
+- (IBAction)togglePanel:(id)sender
+{
+    self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
+    
+    if (self.popover == nil)
+    {
+        self.popover = [[NSPopover alloc] init];
+        
+        if (!self.powerMenuItemView) {
+            self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
+        }
+        self.popover.contentViewController = self.powerMenuItemView;
+        self.popover.animates = NO;
+        self.popover.behavior = NSPopoverBehaviorTransient;
+        
+        // so we can be notified when the popover appears or closes
+        self.popover.delegate = self;
+        
+        NSView *siv = (NSView *)self.menubarController.statusItemView;
+        // configure the preferred position of the popover
+        NSRectEdge prefEdge = NSMaxYEdge;
+        [self.popover showRelativeToRect:CGRectMake(0, -10, 50, 50) ofView:siv preferredEdge:prefEdge];
+    }
+}
+
+#pragma mark 偏好设置部分
 // 初始化偏好设置面板
 - (void)initPreferencePenalWithConfigFile
 {
     // 存储路径
-    if (![[PHConfig sharedPHConfigure] weatherDefaultWPDirectory]) 
+    if (![[PHConfig sharedPHConfigure] weatherDefaultWPDirectory])
     {
         [selfPathRadios selectCellAtRow:1 column:0];
         [selfPath setStringValue:[[PHConfig sharedPHConfigure] getPicPath]];
@@ -73,74 +113,6 @@
     }
 }
 
-// 初始化状态memu
-- (void)activateStatusMenu
-{
-    NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    
-    theItem = [bar statusItemWithLength:NSVariableStatusItemLength];
-    [theItem retain];
-    
-    NSImage *menuImg = [NSImage imageNamed:@"home.png"];
-    [menuImg setSize: NSMakeSize(22.0, 22.0) ];
-    [theItem setImage:menuImg];
-    [theItem setHighlightMode:YES];
-    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"nihao"];
-    
-    //* 菜单元素对象，add后release
-	NSMenuItem *menuItem;
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"about", nil) action:@selector(showAppAboutPage) keyEquivalent:@""];
-    menuItem.tag = 1;
-    [theMenu addItem:menuItem];
-    [menuItem release];
-    
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"home", nil) action:@selector(openZHZWebSite) keyEquivalent:@"a"];
-    menuItem.tag = 3;
-    [theMenu addItem:menuItem];
-    [menuItem release];
-
-    
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Preferences", nil) action:@selector(setAppPreferences) keyEquivalent:@","];
-    menuItem.tag = 2;
-    [theMenu addItem:menuItem];
-    [menuItem release];
-    
-    [theMenu addItem:checkUpdateItem];
-    
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    /*
-    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"gallery", nil) action:@selector(openGallery) keyEquivalent:@"g"];
-    menuItem.tag = 2;
-    [theMenu addItem:menuItem];
-    [menuItem release];
-       
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    */
-	menuItem = [[NSMenuItem alloc] init];
-    PowerMenuItemView *pmi = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
-    menuItem.view = pmi.view;
-    [theMenu setDelegate:pmi];
-    
-	[theMenu addItem:menuItem];
-    [menuItem release];
-    
-    
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    
-    
-    
-    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"exit", nil) action:@selector(exitApp) keyEquivalent:@"q"];
-    menuItem.tag = 5;
-    [theMenu addItem:menuItem];
-    [menuItem release];
-    
-    //*/
-    [theItem setMenu:theMenu];
-}
 // 打开设置面板
 - (void)setAppPreferences
 {
@@ -284,5 +256,70 @@
         }
     }
 }
+
+
+
+#pragma mark -
+#pragma mark NSPopoverDelegate
+// -------------------------------------------------------------------------------
+// Invoked on the delegate when the NSPopoverWillShowNotification notification is sent.
+// This method will also be invoked on the popover.
+// -------------------------------------------------------------------------------
+- (void)popoverWillShow:(NSNotification *)notification
+{
+}
+
+// -------------------------------------------------------------------------------
+// Invoked on the delegate when the NSPopoverDidShowNotification notification is sent.
+// This method will also be invoked on the popover.
+// -------------------------------------------------------------------------------
+- (void)popoverDidShow:(NSNotification *)notification
+{
+    // add new code here after the popover has been shown
+}
+
+// -------------------------------------------------------------------------------
+// Invoked on the delegate when the NSPopoverWillCloseNotification notification is sent.
+// This method will also be invoked on the popover.
+// -------------------------------------------------------------------------------
+- (void)popoverWillClose:(NSNotification *)notification
+{
+    NSString *closeReason = [[notification userInfo] valueForKey:NSPopoverCloseReasonKey];
+    if (closeReason)
+    {
+        // closeReason can be:
+        //      NSPopoverCloseReasonStandard
+        //      NSPopoverCloseReasonDetachToWindow
+        //
+        // add new code here if you want to respond "before" the popover closes
+        //
+    }
+}
+
+// -------------------------------------------------------------------------------
+// Invoked on the delegate when the NSPopoverDidCloseNotification notification is sent.
+// This method will also be invoked on the popover.
+// -------------------------------------------------------------------------------
+- (void)popoverDidClose:(NSNotification *)notification
+{
+    NSString *closeReason = [[notification userInfo] valueForKey:NSPopoverCloseReasonKey];
+    if (closeReason)
+    {
+        // closeReason can be:
+        //      NSPopoverCloseReasonStandard
+        //      NSPopoverCloseReasonDetachToWindow
+        //
+        // add new code here if you want to respond "after" the popover closes
+        //
+    }
+    self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
+    [self.popover release];
+    self.popover = nil;
+}
+
+// -------------------------------------------------------------------------------
+// Invoked on the delegate asked for the detachable window for the popover.
+// -------------------------------------------------------------------------------
+
 
 @end
