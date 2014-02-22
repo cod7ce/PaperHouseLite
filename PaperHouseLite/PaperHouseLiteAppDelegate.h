@@ -10,9 +10,8 @@
 #import "MenubarController.h"
 #import "PowerMenuItemView.h"
 
-@interface PaperHouseLiteAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate> {
+@interface PaperHouseLiteAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate, NSMenuDelegate> {
     NSWindow *window;
-    NSStatusItem *theItem;
     
     NSButton *checkLogin;
     
@@ -50,6 +49,7 @@
 @property (nonatomic, strong) NSPopover *popover;
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong) PowerMenuItemView *powerMenuItemView;
+@property (nonatomic, strong) NSMenu *rightClickMenu;
 
 - (IBAction)togglePanel:(id)sender;
 @end

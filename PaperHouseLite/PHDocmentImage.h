@@ -14,8 +14,9 @@
 @property (nonatomic,retain) NSString *copyright;
 @property (nonatomic,retain) NSString *name;
 @property (nonatomic,retain) NSString *url;
+@property (nonatomic,retain) NSString *thumbnailUrl;
 
-- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url;
+- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url Thumbnail:(NSString *)thumbnail;
 
 - (void)setProperties:(NSDictionary *)properties;
 

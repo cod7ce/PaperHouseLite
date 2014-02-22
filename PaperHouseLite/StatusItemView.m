@@ -42,6 +42,13 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
+    self.eventType = theEvent.type;
+    [NSApp sendAction:self.action to:self.target from:self];
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent
+{
+    self.eventType = theEvent.type;
     [NSApp sendAction:self.action to:self.target from:self];
 }
 

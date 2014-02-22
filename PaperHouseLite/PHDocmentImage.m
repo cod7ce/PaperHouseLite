@@ -19,7 +19,7 @@
     return self;
 }
 
-- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url
+- (id)initWithAuthor:(NSString *)author Copyright:(NSString *)copyright Name:(NSString *)name URL:(NSString *)url Thumbnail:(NSString *)thumbnail
 {
     self = [super init];
     if (self) {
@@ -27,7 +27,8 @@
         self.name = name;
         self.url = url;
         self.copyright = copyright;
-    } 
+        self.thumbnailUrl = thumbnail;
+    }
     return self;
 }
 
@@ -36,6 +37,7 @@
     self.author = [properties objectForKey:@"author"];
     self.name = [properties objectForKey:@"name"];
     self.url = [properties objectForKey:@"url"];
+    self.thumbnailUrl = [properties objectForKey:@"thumbnail_url"];
     self.copyright = [properties objectForKey:@"copyright_link"];
 }
 

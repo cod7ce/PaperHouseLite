@@ -10,6 +10,7 @@
 #import "PHImageGallery.h"
 #import "PHConfig.h"
 #import "PHTool.h"
+#import "StatusItemView.h"
 
 @implementation PaperHouseLiteAppDelegate
 
@@ -30,6 +31,8 @@
     [self initPreferencePenalWithConfigFile];
     
     self.menubarController = [[MenubarController alloc] init];
+    
+    [self initRightClickMenuForStatusBar];
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
@@ -39,32 +42,86 @@
     return NSTerminateNow;
 }
 
+- (void)initRightClickMenuForStatusBar
+{
+    self.rightClickMenu = [[NSMenu alloc] initWithTitle:@"nihao"];
+    
+    //* 菜单元素对象，add后release
+    NSMenuItem *menuItem;
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"about", nil) action:@selector(showAppAboutPage) keyEquivalent:@""];
+    menuItem.tag = 1;
+    [self.rightClickMenu addItem:menuItem];
+    [menuItem release];
+    
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"home", nil) action:@selector(openZHZWebSite) keyEquivalent:@"a"];
+    menuItem.tag = 3;
+    [self.rightClickMenu addItem:menuItem];
+    [menuItem release];
+    
+    [self.rightClickMenu addItem:[NSMenuItem separatorItem]];
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Preferences", nil) action:@selector(setAppPreferences) keyEquivalent:@","];
+    menuItem.tag = 2;
+    [self.rightClickMenu addItem:menuItem];
+    [menuItem release];
+    
+    [self.rightClickMenu addItem:checkUpdateItem];
+    
+    [self.rightClickMenu addItem:[NSMenuItem separatorItem]];
+    /*
+     menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"gallery", nil) action:@selector(openGallery) keyEquivalent:@"g"];
+     menuItem.tag = 2;
+     [theMenu addItem:menuItem];
+     [menuItem release];
+     
+     [theMenu addItem:[NSMenuItem separatorItem]];
+     */
+    
+    menuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"exit", nil) action:@selector(exitApp) keyEquivalent:@"q"];
+    menuItem.tag = 5;
+    [self.rightClickMenu addItem:menuItem];
+    [menuItem release];
+    
+    self.rightClickMenu.delegate = self;
+}
+
 #pragma mark Drop Down Menu 部分
 
 // Actions
 
 - (IBAction)togglePanel:(id)sender
 {
-    self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
-    
-    if (self.popover == nil)
+    StatusItemView *statusItem = (StatusItemView *)sender;
+    if (statusItem.eventType == NSLeftMouseDown)
     {
-        self.popover = [[NSPopover alloc] init];
-        
-        if (!self.powerMenuItemView) {
-            self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
+        if (self.popover == nil)
+        {
+            self.popover = [[NSPopover alloc] init];
+            
+            if (!self.powerMenuItemView) {
+                self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
+            }
+            self.popover.contentViewController = self.powerMenuItemView;
+            self.popover.animates = YES;
+            self.popover.behavior = NSPopoverBehaviorTransient;
+            
+            // so we can be notified when the popover appears or closes
+            self.popover.delegate = self;
+            
+            NSView *siv = (NSView *)self.menubarController.statusItemView;
+            // configure the preferred position of the popover
+            NSRectEdge prefEdge = NSMaxYEdge;
+            [self.popover showRelativeToRect:CGRectMake(0, -10, 50, 50) ofView:siv preferredEdge:prefEdge];
         }
-        self.popover.contentViewController = self.powerMenuItemView;
-        self.popover.animates = NO;
-        self.popover.behavior = NSPopoverBehaviorTransient;
+    }
+    else if (statusItem.eventType == NSRightMouseDown)
+    {
+        NSLog(@"right mouse down");
+        NSLog(@"%@", self.menubarController.statusItem.menu);
         
-        // so we can be notified when the popover appears or closes
-        self.popover.delegate = self;
-        
-        NSView *siv = (NSView *)self.menubarController.statusItemView;
-        // configure the preferred position of the popover
-        NSRectEdge prefEdge = NSMaxYEdge;
-        [self.popover showRelativeToRect:CGRectMake(0, -10, 50, 50) ofView:siv preferredEdge:prefEdge];
+        [self.menubarController.statusItem popUpStatusItemMenu:self.rightClickMenu];
     }
 }
 
@@ -267,6 +324,7 @@
 // -------------------------------------------------------------------------------
 - (void)popoverWillShow:(NSNotification *)notification
 {
+    self.menubarController.hasActiveIcon = YES;
 }
 
 // -------------------------------------------------------------------------------
@@ -294,6 +352,7 @@
         // add new code here if you want to respond "before" the popover closes
         //
     }
+    self.menubarController.hasActiveIcon = NO;
 }
 
 // -------------------------------------------------------------------------------
@@ -312,7 +371,6 @@
         // add new code here if you want to respond "after" the popover closes
         //
     }
-    self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
     [self.popover release];
     self.popover = nil;
 }
@@ -321,5 +379,16 @@
 // Invoked on the delegate asked for the detachable window for the popover.
 // -------------------------------------------------------------------------------
 
+
+#pragma mark NSMenuDelegate
+-(void)menuWillOpen:(NSMenu *)menu
+{
+    self.menubarController.hasActiveIcon = YES;
+}
+
+-(void)menuDidClose:(NSMenu *)menu
+{
+    self.menubarController.hasActiveIcon = NO;
+}
 
 @end

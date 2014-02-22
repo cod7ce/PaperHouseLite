@@ -177,18 +177,16 @@
     NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseData
                                                            options:NSJSONReadingMutableLeaves
                                                              error:&error];
-    NSLog(@"%@", result);
     if (result)
     {
         self.page = [[result objectForKey:@"page"] integerValue];
         self.count = [[result objectForKey:@"count"] integerValue];
         [self.documentImage setProperties:[result objectForKey:@"wallpaper"]];
-        
         // 打开一个新的线程去执行数据的获取
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_queue_t mainQueue = dispatch_get_main_queue();
         dispatch_async(queue, ^{
-            NSURL *url = [NSURL URLWithString: [self.documentImage.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+            NSURL *url = [NSURL URLWithString: [self.documentImage.thumbnailUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             NSImage *img = [[NSImage alloc] initWithContentsOfURL:url];
             dispatch_sync(mainQueue, ^{
                 [self.imageCell setImage:img];
