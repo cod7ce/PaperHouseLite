@@ -32,6 +32,10 @@
 - (void)loadView
 {
     [super loadView];
+    if(![[PHConfig sharedPHConfigure] weatherFirstLaunch])
+    {
+        [self.helpNaviButton removeFromSuperview];
+    }
     [imageCell setTrackingRect:imageCell.frame];
     [self.toolView setAlphaValue:0.0f];
     imageCell.toolView = self.toolView;

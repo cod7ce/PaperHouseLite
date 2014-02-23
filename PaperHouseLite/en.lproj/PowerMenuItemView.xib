@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PowerMenuItemView">
             <connections>
+                <outlet property="helpNaviButton" destination="AZ3-Xp-eB4" id="fM8-mc-0ua"/>
                 <outlet property="imageCell" destination="4" id="63"/>
                 <outlet property="indicator" destination="33" id="34"/>
                 <outlet property="nextBtn" destination="9" id="Crj-ep-Dr5"/>
