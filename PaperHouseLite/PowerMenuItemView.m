@@ -36,6 +36,10 @@
     {
         [self.helpNaviButton removeFromSuperview];
     }
+    else
+    {
+        [[PHConfig sharedPHConfigure] sayByeByeForFirstLaunch];
+    }
     [imageCell setTrackingRect:imageCell.frame];
     [self.toolView setAlphaValue:0.0f];
     imageCell.toolView = self.toolView;
@@ -49,6 +53,7 @@
 {
     [self toggleIndicator];
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?page=%ld", [[PHConfig sharedPHConfigure] getFeedStr], cpage]];
+    NSLog(@"%@", [NSString stringWithFormat:@"%@?page=%ld", [[PHConfig sharedPHConfigure] getFeedStr], cpage]);
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL: url];
     [request setRequestMethod:@"Get"];
     request.delegate = self;
@@ -122,7 +127,7 @@
 // 查看大图
 -(IBAction) suffFullImage:(id)sender
 {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.documentImage.url]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:self.documentImage.copyright]];
 }
 
 // 上一张图片
@@ -194,8 +199,8 @@
             NSImage *img = [[NSImage alloc] initWithContentsOfURL:url];
             dispatch_sync(mainQueue, ^{
                 [self.imageCell setImage:img];
-
-                    [self changeShareViewSize];
+                [self.authorLabel setStringValue:[NSString stringWithFormat:@"作品来自：%@", self.documentImage.author]];
+                [self changeShareViewSize];
                 [self toggleIndicator];
                 [img release];
             });
@@ -205,7 +210,8 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-    NSLog(@"数据获取错误");
+    [self toggleIndicator];
+    NSLog(@"数据获取错误,%@", request.error);
 }
 
 // delegate

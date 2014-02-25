@@ -11,7 +11,9 @@
 	<key>lanuchatlogin</key>
 	<string>YES</string>
 	<key>dataurl</key>
-	<string>http://localhost:3000/wallpapers.json</string>
+	<string>wallpapers.json</string>
+	<key>home</key>
+	<string>http://localhost:3000</string>
 	<key>firstlanuch</key>
 	<string>YES</string>
 	<key>needgrowl</key>

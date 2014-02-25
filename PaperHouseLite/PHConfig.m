@@ -14,7 +14,7 @@ static PHConfig *sharedAC;
 
 @synthesize config;
 
-@synthesize  firstLaunch,launchAtLogin,swifWP,downloadWP,wpDirectory,dataURL,needGrowl;
+@synthesize  firstLaunch,launchAtLogin,swifWP,downloadWP,wpDirectory,dataURL,homeURL,needGrowl;
 
 // 单例模式
 +(PHConfig *)sharedPHConfigure
@@ -48,19 +48,25 @@ static PHConfig *sharedAC;
     downloadWP      = [self.config objectForKey:@"downloadwp"];
     wpDirectory     = [self.config objectForKey:@"wpdirectory"];
     dataURL         = [self.config objectForKey:@"dataurl"];
+    homeURL         = [self.config objectForKey:@"home"];
     needGrowl       = [self.config objectForKey:@"needgrowl"];
 }
 
 // 获取数据来源url
 -(NSURL *)getFeed
 {
-    return [NSURL URLWithString:self.dataURL];
+    return [NSURL URLWithString:[self getFeedStr]];
 }
 
 // 获取数据来源url
 -(NSString *)getFeedStr
 {
-    return self.dataURL;
+    return [NSString stringWithFormat:@"%@/%@", self.homeURL, self.dataURL];
+}
+
+-(NSString *)getHomeStr
+{
+    return self.homeURL;
 }
 
 // 获取图片存放路径
@@ -145,8 +151,8 @@ static PHConfig *sharedAC;
 // 将配置写入文档
 -(void)saveConfigToFile
 {
-    NSDictionary *configTemp = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:self.firstLaunch, self.launchAtLogin, self.swifWP, self.needGrowl, self.downloadWP, self.wpDirectory, self.dataURL, nil]
-                                                             forKeys:[NSArray arrayWithObjects:@"firstlanuch", @"lanuchatlogin", @"siftwp", @"needgrowl", @"downloadwp", @"wpdirectory", @"dataurl", nil]];
+    NSDictionary *configTemp = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObjects:self.firstLaunch, self.launchAtLogin, self.swifWP, self.needGrowl, self.downloadWP, self.wpDirectory, self.dataURL, self.homeURL, nil]
+                                                             forKeys:[NSArray arrayWithObjects:@"firstlanuch", @"lanuchatlogin", @"siftwp", @"needgrowl", @"downloadwp", @"wpdirectory", @"dataurl", @"home", nil]];
     NSString *path	 = [[NSBundle mainBundle] pathForResource:@"configure" ofType:@"plist"];
     [configTemp writeToFile:path atomically:YES];
 }

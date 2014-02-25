@@ -46,6 +46,7 @@ typedef enum {
 @property (nonatomic) NSUInteger page;
 //@property (retain,nonatomic) IBOutlet NSButton *setWallPaper;
 @property (assign) IBOutlet NSButton *helpNaviButton;
+@property (assign) IBOutlet NSTextField *authorLabel;
 
 -(IBAction) nextImage:(id)sender;
 -(IBAction) prevImage:(id)sender;

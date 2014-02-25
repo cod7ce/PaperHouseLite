@@ -20,6 +20,7 @@
     NSString *downloadWP;
     NSString *wpDirectory;
     NSString *dataURL;
+    NSString *homeURL;
 }
 
 @property (nonatomic, retain) NSDictionary *config;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) NSString *downloadWP;
 @property (nonatomic, retain) NSString *wpDirectory;
 @property (nonatomic, retain) NSString *dataURL;
+@property (nonatomic, retain) NSString *homeURL;
 
 +(PHConfig *)sharedPHConfigure;
 
@@ -38,6 +40,7 @@
 
 -(NSURL *)getFeed;
 -(NSString *)getFeedStr;
+-(NSString *)getHomeStr;
 -(NSString *)getPicPath;
 -(bool)weatherDefaultWPDirectory;
 -(bool)weatherLaunchAtLogin;

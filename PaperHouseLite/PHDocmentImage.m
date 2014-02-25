@@ -7,6 +7,7 @@
 //
 
 #import "PHDocmentImage.h"
+#import "PHConfig.h"
 
 @implementation PHDocmentImage
 
@@ -36,8 +37,8 @@
 {
     self.author = [properties objectForKey:@"author"];
     self.name = [properties objectForKey:@"name"];
-    self.url = [properties objectForKey:@"url"];
-    self.thumbnailUrl = [properties objectForKey:@"thumbnail_url"];
+    self.url = [NSString stringWithFormat:@"%@%@",[[PHConfig sharedPHConfigure] getHomeStr], [properties objectForKey:@"url"]];
+    self.thumbnailUrl = [NSString stringWithFormat:@"%@%@",[[PHConfig sharedPHConfigure] getHomeStr], [properties objectForKey:@"thumbnail_url"]];
     self.copyright = [properties objectForKey:@"copyright_link"];
 }
 

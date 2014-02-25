@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PowerMenuItemView">
             <connections>
+                <outlet property="authorLabel" destination="Fls-dA-ToU" id="st0-xF-LMY"/>
                 <outlet property="helpNaviButton" destination="AZ3-Xp-eB4" id="fM8-mc-0ua"/>
                 <outlet property="imageCell" destination="4" id="63"/>
                 <outlet property="indicator" destination="33" id="34"/>
@@ -179,6 +180,15 @@
                                             </button>
                                         </subviews>
                                     </customView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fls-dA-ToU">
+                                        <rect key="frame" x="5" y="10" width="295" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="作品来源 : 活不明白" id="EHw-LD-TQb">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
                         </subviews>

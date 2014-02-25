@@ -26,12 +26,11 @@
     if([[PHConfig sharedPHConfigure] weatherFirstLaunch])
     {
         [PHTool addAppAsLoginItem];
-        [[PHConfig sharedPHConfigure] sayByeByeForFirstLaunch];
     }
     [self initPreferencePenalWithConfigFile];
     
     self.menubarController = [[MenubarController alloc] init];
-    
+    self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
     [self initRightClickMenuForStatusBar];
 }
 
@@ -100,9 +99,6 @@
         {
             self.popover = [[NSPopover alloc] init];
             
-            if (!self.powerMenuItemView) {
-                self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
-            }
             self.popover.contentViewController = self.powerMenuItemView;
             self.popover.animates = YES;
             self.popover.behavior = NSPopoverBehaviorTransient;
