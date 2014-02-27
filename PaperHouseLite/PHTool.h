@@ -21,8 +21,6 @@ typedef enum {
 
 @interface PHTool : NSObject
 
-+(NSMutableArray *)parseToDocumentImageWithDesc:(NSString *)desc;
-
 +(BOOL)checkPicturePath;
 
 +(void)addAppAsLoginItem;

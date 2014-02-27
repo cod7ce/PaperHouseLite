@@ -8,11 +8,11 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PowerMenuItemView">
             <connections>
                 <outlet property="authorLabel" destination="Fls-dA-ToU" id="st0-xF-LMY"/>
+                <outlet property="circularIndicator" destination="IL4-4a-qNE" id="Wl8-NG-lAy"/>
+                <outlet property="circularView" destination="fBq-OW-AYl" id="1re-Or-yVH"/>
                 <outlet property="helpNaviButton" destination="AZ3-Xp-eB4" id="fM8-mc-0ua"/>
                 <outlet property="imageCell" destination="4" id="63"/>
                 <outlet property="indicator" destination="33" id="34"/>
-                <outlet property="nextBtn" destination="9" id="Crj-ep-Dr5"/>
-                <outlet property="prevBtn" destination="8" id="ChC-vh-qUf"/>
                 <outlet property="toolView" destination="TBJ-JF-yHs" id="LVu-8G-pt6"/>
                 <outlet property="view" destination="1" id="2"/>
             </connections>
@@ -33,7 +33,7 @@
                             <imageView id="4" userLabel="Image View" customClass="PHImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="axesIndependently" id="15"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="axesIndependently" image="ImageCellBG" id="15"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WdQ-LX-6tu">
                                 <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
@@ -59,17 +59,15 @@
                                             <action selector="setWallPaper:" target="-2" id="32"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" verticalHuggingPriority="750" id="6">
-                                        <rect key="frame" x="139" y="154" width="30" height="30"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fls-dA-ToU">
+                                        <rect key="frame" x="5" y="10" width="295" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="download" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="13">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="作品来源 : 活不明白" id="EHw-LD-TQb">
                                             <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="saveFullImage:" target="-2" id="31"/>
-                                        </connections>
-                                    </button>
+                                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <button verticalHuggingPriority="750" id="7">
                                         <rect key="frame" x="2" y="0.0" width="300" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -180,15 +178,6 @@
                                             </button>
                                         </subviews>
                                     </customView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Fls-dA-ToU">
-                                        <rect key="frame" x="5" y="10" width="295" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="作品来源 : 活不明白" id="EHw-LD-TQb">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -207,14 +196,24 @@
                         <action selector="howToUseAction:" target="-2" id="VwT-F3-ZxW"/>
                     </connections>
                 </button>
+                <customView autoresizesSubviews="NO" appearanceType="lightContent" id="fBq-OW-AYl">
+                    <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView id="IL4-4a-qNE" customClass="DNCircularIndicator">
+                            <rect key="frame" x="103" y="50" width="100" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                    </subviews>
+                </customView>
             </subviews>
         </customView>
     </objects>
     <resources>
+        <image name="ImageCellBG" width="305" height="200"/>
         <image name="arrows-left" width="30" height="30"/>
         <image name="arrows-right" width="30" height="30"/>
         <image name="douban" width="16" height="16"/>
-        <image name="download" width="30" height="30"/>
         <image name="highlight" width="305" height="200"/>
         <image name="howtouse" width="305" height="200"/>
         <image name="kaixin" width="16" height="16"/>

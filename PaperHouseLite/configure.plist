@@ -13,7 +13,7 @@
 	<key>dataurl</key>
 	<string>wallpapers.json</string>
 	<key>home</key>
-	<string>http://localhost:3000</string>
+	<string>http://zhifangzi.com</string>
 	<key>firstlanuch</key>
 	<string>YES</string>
 	<key>needgrowl</key>

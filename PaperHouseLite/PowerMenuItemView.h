@@ -10,6 +10,7 @@
 #import "PHImageView.h"
 #import "ASIFormDataRequest.h"
 #import "PHDocmentImage.h"
+#import "DNCircularIndicator.h"
 
 typedef enum {
     Item,
@@ -38,8 +39,6 @@ typedef enum {
 @property (retain,nonatomic) IBOutlet NSProgressIndicator *indicator;
 
 @property (retain,nonatomic) IBOutlet NSView *toolView;
-@property (assign) IBOutlet NSButton *prevBtn;
-@property (assign) IBOutlet NSButton *nextBtn;
 
 @property (retain,nonatomic) PHDocmentImage *documentImage;
 @property (nonatomic) NSUInteger count;
@@ -47,11 +46,12 @@ typedef enum {
 //@property (retain,nonatomic) IBOutlet NSButton *setWallPaper;
 @property (assign) IBOutlet NSButton *helpNaviButton;
 @property (assign) IBOutlet NSTextField *authorLabel;
+@property (assign) IBOutlet DNCircularIndicator *circularIndicator;
+@property (assign) IBOutlet NSView *circularView;
 
 -(IBAction) nextImage:(id)sender;
 -(IBAction) prevImage:(id)sender;
 -(IBAction) suffFullImage:(id)sender;
--(IBAction) saveFullImage:(id)sender;
 -(IBAction) setWallPaper:(id)sender;
 
 -(IBAction) shareSNSAction:(id)sender;

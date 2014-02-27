@@ -13,35 +13,6 @@
 
 @implementation PHTool
 
-// 解析参数样式：<a href="a"><img src="c" /></a> ... <a href="..."><img src="..." /></a>
-// 将a、b提取出来，通过b构造c，c为fullimagesrc
-// 返回 PHDocumentImage 的对象数组
-+(NSMutableArray *)parseToDocumentImageWithDesc:(NSString *)desc
-{
-    NSMutableArray *returnArray = [NSMutableArray arrayWithCapacity:500];
-    NSString *regex = @"<a[^>]href=[^>]+target=\"_blank\"><img[^>]+src=\"[^>]+\"[^>]+><\\/a>";
-    
-    NSArray *matchArray = [desc componentsMatchedByRegex:regex];
-    for (int i=0; i < matchArray.count; i++) 
-    {
-        NSString *subRegex = @"http:\\/\\/[^>]+(jpg|png|target)";
-        NSArray *subMatchArray = [[matchArray objectAtIndex:i] componentsMatchedByRegex:subRegex];
-        
-        NSString *original = [subMatchArray objectAtIndex:0];
-        NSString *small = [subMatchArray objectAtIndex:1];
-        
-        original = [original stringByReplacingOccurrencesOfRegex:@" target" withString:@""];
-        NSString *full =  [small stringByReplacingOccurrencesOfRegex:@"-180x120" withString:@""];
-        PHDocmentImage *phdi = [[PHDocmentImage alloc] initWithFullImageSrc:full 
-                                                              SmallImageSrc:small 
-                                                           OriginalImageSrc:original];
-        [returnArray addObject:phdi];
-        [phdi release];
-    } 
-    return returnArray;
-}
-
-
 // 检查图片存放目录是否存在，没有则创建
 +(BOOL)checkPicturePath
 {

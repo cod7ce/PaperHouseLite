@@ -98,7 +98,7 @@
         if (self.popover == nil)
         {
             self.popover = [[NSPopover alloc] init];
-            
+            //self.popover.appearance = NSPopoverAppearanceHUD;
             self.popover.contentViewController = self.powerMenuItemView;
             self.popover.animates = YES;
             self.popover.behavior = NSPopoverBehaviorTransient;
@@ -109,7 +109,8 @@
             NSView *siv = (NSView *)self.menubarController.statusItemView;
             // configure the preferred position of the popover
             NSRectEdge prefEdge = NSMaxYEdge;
-            [self.popover showRelativeToRect:CGRectMake(0, -10, 50, 50) ofView:siv preferredEdge:prefEdge];
+            [self.popover showRelativeToRect:[siv bounds] ofView:siv preferredEdge:prefEdge];
+            [self.popover.contentViewController.view.window becomeFirstResponder];
         }
     }
     else if (statusItem.eventType == NSRightMouseDown)
@@ -310,7 +311,13 @@
     }
 }
 
-
+#pragma mark AppDelegate
+- (void)applicationDidResignActive:(NSNotification *)aNotification
+{
+    if (self.popover && self.popover.isShown) {
+        [self.popover close];
+    }
+}
 
 #pragma mark -
 #pragma mark NSPopoverDelegate
@@ -324,49 +331,12 @@
 }
 
 // -------------------------------------------------------------------------------
-// Invoked on the delegate when the NSPopoverDidShowNotification notification is sent.
-// This method will also be invoked on the popover.
-// -------------------------------------------------------------------------------
-- (void)popoverDidShow:(NSNotification *)notification
-{
-    // add new code here after the popover has been shown
-}
-
-// -------------------------------------------------------------------------------
-// Invoked on the delegate when the NSPopoverWillCloseNotification notification is sent.
-// This method will also be invoked on the popover.
-// -------------------------------------------------------------------------------
-- (void)popoverWillClose:(NSNotification *)notification
-{
-    NSString *closeReason = [[notification userInfo] valueForKey:NSPopoverCloseReasonKey];
-    if (closeReason)
-    {
-        // closeReason can be:
-        //      NSPopoverCloseReasonStandard
-        //      NSPopoverCloseReasonDetachToWindow
-        //
-        // add new code here if you want to respond "before" the popover closes
-        //
-    }
-    self.menubarController.hasActiveIcon = NO;
-}
-
-// -------------------------------------------------------------------------------
 // Invoked on the delegate when the NSPopoverDidCloseNotification notification is sent.
 // This method will also be invoked on the popover.
 // -------------------------------------------------------------------------------
 - (void)popoverDidClose:(NSNotification *)notification
 {
-    NSString *closeReason = [[notification userInfo] valueForKey:NSPopoverCloseReasonKey];
-    if (closeReason)
-    {
-        // closeReason can be:
-        //      NSPopoverCloseReasonStandard
-        //      NSPopoverCloseReasonDetachToWindow
-        //
-        // add new code here if you want to respond "after" the popover closes
-        //
-    }
+    self.menubarController.hasActiveIcon = NO;
     [self.popover release];
     self.popover = nil;
 }
