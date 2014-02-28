@@ -60,4 +60,6 @@ typedef enum {
 -(void)changeShareViewSize;
 -(void) toggleIndicator;
 
+-(void)initView;
+
 @end

@@ -1,0 +1,2 @@
+@interface PopupPanel : NSPanel
+@end

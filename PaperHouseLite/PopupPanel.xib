@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1070" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PopupPanelController">
+            <connections>
+                <outlet property="backgroundView" destination="OOT-OS-UIh" id="BiS-ay-HWh"/>
+                <outlet property="powerMenuItemViewController" destination="Zgl-mK-cZM" id="b01-Sd-7F0"/>
+                <outlet property="window" destination="Cbx-lT-QRe" id="M6c-Gt-jxL"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="none" id="Cbx-lT-QRe" customClass="PopupPanel">
+            <windowStyleMask key="styleMask" utility="YES" nonactivatingPanel="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="139" y="81" width="305" height="208"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="OOT-OS-UIh" customClass="BackgroundView">
+                <rect key="frame" x="0.0" y="0.0" width="305" height="208"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibd-7w-z5G">
+                        <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <box autoresizesSubviews="NO" fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="iU8-uz-NJG">
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView">
+                                    <rect key="frame" x="1" y="1" width="303" height="198"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdk-3k-Sm4" userLabel="Image View" customClass="PHImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="topLeft" imageScaling="axesIndependently" image="ImageCellBG" id="w5s-wY-yy7"/>
+                                        </imageView>
+                                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ST6-JF-GaQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="bottomRight" imageScaling="proportionallyUpOrDown" image="highlight" id="XF5-jn-t2y"/>
+                                        </imageView>
+                                        <progressIndicator hidden="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Noo-yX-SsF">
+                                            <rect key="frame" x="144" y="92" width="16" height="16"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        </progressIndicator>
+                                        <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xKf-qh-1Wc">
+                                            <rect key="frame" x="0.0" y="0.0" width="305" height="199"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <subviews>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ko5-tY-uU8">
+                                                    <rect key="frame" x="0.0" y="99" width="305" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="w4M-cq-egc">
+                                                        <behavior key="behavior" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="setWallPaper:" target="Zgl-mK-cZM" id="crM-93-wgD"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NPg-BK-VTj">
+                                                    <rect key="frame" x="5" y="10" width="295" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="纸房子每日壁纸" id="LXm-gX-2QQ">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c36-vg-WbZ">
+                                                    <rect key="frame" x="2" y="0.0" width="300" height="98"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="2BT-Vi-c1t">
+                                                        <behavior key="behavior" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="suffFullImage:" target="Zgl-mK-cZM" id="qi6-Yl-0zf"/>
+                                                    </connections>
+                                                </button>
+                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xan-Oe-wGy">
+                                                    <rect key="frame" x="20" y="89" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="arrows-left" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="cXT-hb-zFI">
+                                                        <behavior key="behavior" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="prevImage:" target="Zgl-mK-cZM" id="n6J-hS-rqs"/>
+                                                    </connections>
+                                                </button>
+                                                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Z6-AX-OMC">
+                                                    <rect key="frame" x="265" y="89" width="20" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="bevel" bezelStyle="circular" image="arrows-right" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="XaD-l6-3Et">
+                                                        <behavior key="behavior" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="nextImage:" target="Zgl-mK-cZM" id="kKn-o1-WIp"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </customView>
+                                    </subviews>
+                                </view>
+                                <color key="borderColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </box>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lbQ-Cq-eCL">
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="199"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="howtouse" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="kd7-JL-kAR">
+                                    <behavior key="behavior" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="howToUseAction:" target="Zgl-mK-cZM" id="zDt-lQ-5bf"/>
+                                </connections>
+                            </button>
+                            <customView autoresizesSubviews="NO" appearanceType="lightContent" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkF-7M-BBo">
+                                <rect key="frame" x="0.0" y="0.0" width="305" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hpf-Iv-Vd3" customClass="DNCircularIndicator">
+                                        <rect key="frame" x="123" y="70" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    </customView>
+                                </subviews>
+                            </customView>
+                        </subviews>
+                    </customView>
+                </subviews>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="bUr-rB-vMJ"/>
+            </connections>
+        </window>
+        <viewController id="Zgl-mK-cZM" customClass="PowerMenuItemView">
+            <connections>
+                <outlet property="authorLabel" destination="NPg-BK-VTj" id="G5B-eH-wP5"/>
+                <outlet property="circularIndicator" destination="Hpf-Iv-Vd3" id="ax4-uj-XEr"/>
+                <outlet property="circularView" destination="jkF-7M-BBo" id="GWl-8P-QdP"/>
+                <outlet property="helpNaviButton" destination="lbQ-Cq-eCL" id="uzo-ur-kIq"/>
+                <outlet property="imageCell" destination="hdk-3k-Sm4" id="Bpk-AQ-JhT"/>
+                <outlet property="indicator" destination="Noo-yX-SsF" id="i2s-DL-Fi2"/>
+                <outlet property="toolView" destination="xKf-qh-1Wc" id="W6r-zy-syR"/>
+                <outlet property="view" destination="ibd-7w-z5G" id="FbK-TO-2ib"/>
+            </connections>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="ImageCellBG" width="305" height="200"/>
+        <image name="arrows-left" width="30" height="30"/>
+        <image name="arrows-right" width="30" height="30"/>
+        <image name="highlight" width="305" height="200"/>
+        <image name="howtouse" width="305" height="200"/>
+    </resources>
+</document>

@@ -47,7 +47,6 @@
 		93ACC671147B457B00AD03E8 /* ImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93ACC66E147B457B00AD03E8 /* ImageBrowserView.m */; };
 		93ACC674147B45FA00AD03E8 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 93ACC673147B45FA00AD03E8 /* Utilities.m */; };
 		93B053AB14610A1F0033AC26 /* zhifangzi-ico.icns in Resources */ = {isa = PBXBuildFile; fileRef = 93B053AA14610A1F0033AC26 /* zhifangzi-ico.icns */; };
-		93BD552C146BC3810094A429 /* PowerMenuItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93BD552E146BC3810094A429 /* PowerMenuItemView.xib */; };
 		93BD553C146BCDA20094A429 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93BD553E146BCDA20094A429 /* Localizable.strings */; };
 		93D661D21457948600FDA4A8 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D661D11457948600FDA4A8 /* home.png */; };
 		93D8F19E1473557E0082E17B /* toolbarbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D8F19D1473557E0082E17B /* toolbarbg.png */; };
@@ -86,6 +85,10 @@
 		E9A9829A18B74603001A5907 /* howtouse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A9829818B74603001A5907 /* howtouse@2x.png */; };
 		E9AD86CC18BEDBA500EBE2C4 /* ImageCellBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AD86CA18BEDBA500EBE2C4 /* ImageCellBG.png */; };
 		E9AD86CD18BEDBA500EBE2C4 /* ImageCellBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AD86CB18BEDBA500EBE2C4 /* ImageCellBG@2x.png */; };
+		E9AD86CF18BEFE2D00EBE2C4 /* PopupPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AD86CE18BEFE2D00EBE2C4 /* PopupPanel.xib */; };
+		E9AD86D218BEFF2800EBE2C4 /* PopupPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AD86D118BEFF2800EBE2C4 /* PopupPanel.m */; };
+		E9AD86D518BEFF9600EBE2C4 /* PopupPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AD86D418BEFF9600EBE2C4 /* PopupPanelController.m */; };
+		E9AD86D818BEFFC300EBE2C4 /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AD86D718BEFFC300EBE2C4 /* BackgroundView.m */; };
 		E9B55DB118B6ED840063AC7A /* MenubarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B55DA918B6ED840063AC7A /* MenubarController.m */; };
 		E9B55DB418B6ED840063AC7A /* StatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B55DAF18B6ED840063AC7A /* StatusItemView.m */; };
 /* End PBXBuildFile section */
@@ -174,7 +177,6 @@
 		93ACC673147B45FA00AD03E8 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		93B053AA14610A1F0033AC26 /* zhifangzi-ico.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "zhifangzi-ico.icns"; sourceTree = "<group>"; };
 		93BD552B146BC24F0094A429 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
-		93BD552D146BC3810094A429 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PowerMenuItemView.xib; sourceTree = "<group>"; };
 		93BD553D146BCDA20094A429 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		93BD553F146BCDA90094A429 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		93D661D11457948600FDA4A8 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -239,11 +241,17 @@
 		E9A9829818B74603001A5907 /* howtouse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "howtouse@2x.png"; sourceTree = "<group>"; };
 		E9AD86CA18BEDBA500EBE2C4 /* ImageCellBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ImageCellBG.png; sourceTree = "<group>"; };
 		E9AD86CB18BEDBA500EBE2C4 /* ImageCellBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ImageCellBG@2x.png"; sourceTree = "<group>"; };
+		E9AD86CE18BEFE2D00EBE2C4 /* PopupPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupPanel.xib; sourceTree = "<group>"; };
+		E9AD86D018BEFF2800EBE2C4 /* PopupPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupPanel.h; sourceTree = "<group>"; };
+		E9AD86D118BEFF2800EBE2C4 /* PopupPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupPanel.m; sourceTree = "<group>"; };
+		E9AD86D318BEFF9600EBE2C4 /* PopupPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupPanelController.h; sourceTree = "<group>"; };
+		E9AD86D418BEFF9600EBE2C4 /* PopupPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupPanelController.m; sourceTree = "<group>"; };
+		E9AD86D618BEFFC300EBE2C4 /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundView.h; sourceTree = "<group>"; };
+		E9AD86D718BEFFC300EBE2C4 /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundView.m; sourceTree = "<group>"; };
 		E9B55DA818B6ED840063AC7A /* MenubarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenubarController.h; sourceTree = "<group>"; };
 		E9B55DA918B6ED840063AC7A /* MenubarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenubarController.m; sourceTree = "<group>"; };
 		E9B55DAE18B6ED840063AC7A /* StatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusItemView.h; sourceTree = "<group>"; };
 		E9B55DAF18B6ED840063AC7A /* StatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusItemView.m; sourceTree = "<group>"; };
-		E9B55DC918B700670063AC7A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/PowerMenuItemView.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,8 +325,8 @@
 			isa = PBXGroup;
 			children = (
 				9381725414760EE7005D8226 /* PHImageGallery.xib */,
-				93BD552E146BC3810094A429 /* PowerMenuItemView.xib */,
 				93495F231457930100C406FA /* MainMenu.xib */,
+				E9AD86CE18BEFE2D00EBE2C4 /* PopupPanel.xib */,
 			);
 			name = xib;
 			sourceTree = "<group>";
@@ -551,6 +559,10 @@
 				93F709D3147A136E002E8A26 /* PHImageBrowserViewItem.m */,
 				E958468418BE2F2E00E35802 /* DNCircularIndicator.h */,
 				E958468518BE2F2E00E35802 /* DNCircularIndicator.m */,
+				E9AD86D618BEFFC300EBE2C4 /* BackgroundView.h */,
+				E9AD86D718BEFFC300EBE2C4 /* BackgroundView.m */,
+				E9AD86D018BEFF2800EBE2C4 /* PopupPanel.h */,
+				E9AD86D118BEFF2800EBE2C4 /* PopupPanel.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -558,6 +570,8 @@
 		E9B55DB818B6EE1E0063AC7A /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9AD86D318BEFF9600EBE2C4 /* PopupPanelController.h */,
+				E9AD86D418BEFF9600EBE2C4 /* PopupPanelController.m */,
 				E9B55DA818B6ED840063AC7A /* MenubarController.h */,
 				E9B55DA918B6ED840063AC7A /* MenubarController.m */,
 				9381724D14760E7B005D8226 /* PHImageGallery.h */,
@@ -626,7 +640,6 @@
 				93495F251457930100C406FA /* MainMenu.xib in Resources */,
 				93D661D21457948600FDA4A8 /* home.png in Resources */,
 				930ACE49145A9116006F6814 /* configure.plist in Resources */,
-				93BD552C146BC3810094A429 /* PowerMenuItemView.xib in Resources */,
 				93B053AB14610A1F0033AC26 /* zhifangzi-ico.icns in Resources */,
 				93840DE51468D64C005F236C /* dsa_pub.pem in Resources */,
 				E9A9829418B7445D001A5907 /* wallpaper.png in Resources */,
@@ -634,6 +647,7 @@
 				E9A9829918B74603001A5907 /* howtouse.png in Resources */,
 				E9A9829A18B74603001A5907 /* howtouse@2x.png in Resources */,
 				934F60BA147266C700AEF9D0 /* douban.png in Resources */,
+				E9AD86CF18BEFE2D00EBE2C4 /* PopupPanel.xib in Resources */,
 				934F60BB147266C700AEF9D0 /* kaixin.png in Resources */,
 				934F60BC147266C700AEF9D0 /* renren.png in Resources */,
 				E9AD86CD18BEDBA500EBE2C4 /* ImageCellBG@2x.png in Resources */,
@@ -680,8 +694,10 @@
 				E902E93D18B4562C003C5E6C /* ASIFormDataRequest.m in Sources */,
 				E902E93E18B4562C003C5E6C /* ASIHTTPRequest.m in Sources */,
 				93D8F1A1147359E90082E17B /* PHImageView.m in Sources */,
+				E9AD86D818BEFFC300EBE2C4 /* BackgroundView.m in Sources */,
 				9381724F14760E7B005D8226 /* PHImageGallery.m in Sources */,
 				E902E94B18B4562C003C5E6C /* ASIS3BucketObject.m in Sources */,
+				E9AD86D218BEFF2800EBE2C4 /* PopupPanel.m in Sources */,
 				93F709D4147A136E002E8A26 /* PHImageBrowserViewItem.m in Sources */,
 				93ACC66F147B457B00AD03E8 /* ImageBrowserBackgroundLayer.m in Sources */,
 				E902E94A18B4562C003C5E6C /* ASIS3Bucket.m in Sources */,
@@ -693,6 +709,7 @@
 				93ACC671147B457B00AD03E8 /* ImageBrowserView.m in Sources */,
 				E958468618BE2F2E00E35802 /* DNCircularIndicator.m in Sources */,
 				E9B55DB118B6ED840063AC7A /* MenubarController.m in Sources */,
+				E9AD86D518BEFF9600EBE2C4 /* PopupPanelController.m in Sources */,
 				93ACC674147B45FA00AD03E8 /* Utilities.m in Sources */,
 				939ACF4B1484C3AF001EE873 /* MBCoverFlowScroller.m in Sources */,
 				939ACF4C1484C3AF001EE873 /* MBCoverFlowView.m in Sources */,
@@ -737,15 +754,6 @@
 				9381725514760EF0005D8226 /* zh-Hans */,
 			);
 			name = PHImageGallery.xib;
-			sourceTree = "<group>";
-		};
-		93BD552E146BC3810094A429 /* PowerMenuItemView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93BD552D146BC3810094A429 /* en */,
-				E9B55DC918B700670063AC7A /* zh-Hans */,
-			);
-			name = PowerMenuItemView.xib;
 			sourceTree = "<group>";
 		};
 		93BD553E146BCDA20094A429 /* Localizable.strings */ = {

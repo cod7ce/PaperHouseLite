@@ -17,6 +17,21 @@
 @synthesize window;
 @synthesize checkLogin,autosetWP,swifWP,selfPath,selfPathRadios,checkUpdateItem,growl;
 
+@synthesize panelController = _panelController;
+
+void *kContextActivePanel = &kContextActivePanel;
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == kContextActivePanel) {
+        self.menubarController.hasActiveIcon = self.panelController.hasActivePanel;
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+
 #pragma mark -
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -30,7 +45,7 @@
     [self initPreferencePenalWithConfigFile];
     
     self.menubarController = [[MenubarController alloc] init];
-    self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
+    //self.powerMenuItemView = [[PowerMenuItemView alloc] initWithNibName:@"PowerMenuItemView" bundle:nil];
     [self initRightClickMenuForStatusBar];
 }
 
@@ -95,6 +110,9 @@
     StatusItemView *statusItem = (StatusItemView *)sender;
     if (statusItem.eventType == NSLeftMouseDown)
     {
+        self.menubarController.hasActiveIcon = !self.menubarController.hasActiveIcon;
+        self.panelController.hasActivePanel = self.menubarController.hasActiveIcon;
+        /*
         if (self.popover == nil)
         {
             self.popover = [[NSPopover alloc] init];
@@ -112,6 +130,7 @@
             [self.popover showRelativeToRect:[siv bounds] ofView:siv preferredEdge:prefEdge];
             [self.popover.contentViewController.view.window becomeFirstResponder];
         }
+         */
     }
     else if (statusItem.eventType == NSRightMouseDown)
     {
@@ -345,6 +364,24 @@
 // Invoked on the delegate asked for the detachable window for the popover.
 // -------------------------------------------------------------------------------
 
+#pragma mark - Public accessors
+
+- (PopupPanelController *)panelController
+{
+    if (_panelController  == nil) {
+        _panelController  = [[PopupPanelController alloc] initWithDelegate:self];
+        [self.panelController  addObserver:self forKeyPath:@"hasActivePanel" options:0 context:kContextActivePanel];
+        //[self.panelController.backgroundView addSubview:self.powerMenuItemView.view];
+    }
+    return _panelController;
+}
+
+#pragma mark - PanelControllerDelegate
+
+- (StatusItemView *)statusItemViewForPanelController:(PopupPanelController *)controller
+{
+    return self.menubarController.statusItemView;
+}
 
 #pragma mark NSMenuDelegate
 -(void)menuWillOpen:(NSMenu *)menu

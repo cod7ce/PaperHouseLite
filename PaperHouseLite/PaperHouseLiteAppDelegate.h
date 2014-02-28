@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "MenubarController.h"
 #import "PowerMenuItemView.h"
+#import "PopupPanelController.h"
 
-@interface PaperHouseLiteAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate, NSMenuDelegate> {
+@interface PaperHouseLiteAppDelegate : NSObject <NSApplicationDelegate, NSPopoverDelegate, NSMenuDelegate, PopupPanelControllerDelegate> {
     NSWindow *window;
     
     NSButton *checkLogin;
@@ -47,6 +48,7 @@
 
 #pragma mark For Drop Down Menu
 @property (nonatomic, strong) NSPopover *popover;
+@property (nonatomic, strong, readonly) PopupPanelController *panelController;
 @property (nonatomic, strong) MenubarController *menubarController;
 @property (nonatomic, strong) PowerMenuItemView *powerMenuItemView;
 @property (nonatomic, strong) NSMenu *rightClickMenu;

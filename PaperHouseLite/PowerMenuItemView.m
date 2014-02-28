@@ -19,6 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    NSLog(@"nil");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         NSLog(@"初始化对象");
@@ -30,9 +31,26 @@
     return self;
 }
 
-- (void)loadView
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    [super loadView];
+    NSLog(@"initWithCoder");
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        NSLog(@"初始化对象");
+        self.page = 1;
+        self.count = 1;
+        self.documentImage = [[PHDocmentImage alloc] init];
+        [self.circularIndicator setIndeterminate:NO];
+    }
+    return self;
+}
+
+-(void)initView
+{
+    self.page = 1;
+    self.count = 1;
+    self.documentImage = [[PHDocmentImage alloc] init];
+    [self.circularIndicator setIndeterminate:NO];
     
     // 是否显示帮助图层
     if(![[PHConfig sharedPHConfigure] weatherFirstLaunch]) {
@@ -54,6 +72,11 @@
     // 加载数据
     NSLog(@"加载数据");
     [self getWallpaper:1];
+}
+
+- (void)loadView
+{
+    [super loadView];
 }
 
 -(void)getWallpaper:(NSInteger)cpage

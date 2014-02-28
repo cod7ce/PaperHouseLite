@@ -160,10 +160,10 @@
     outCircleRect.origin.y = (NSHeight(canvasRect) - sideNoLine) / 2.0;
     
     inCircleRect = NSInsetRect(outCircleRect, thickness - lineWidth, thickness - lineWidth);
-    
+
     circlePath = [NSBezierPath bezierPathWithOvalInRect:outCircleRect];
     inCircle = [NSBezierPath bezierPathWithOvalInRect:inCircleRect];
-    [circlePath appendBezierPath:inCircle];
+    //[circlePath appendBezierPath:inCircle];
     [circlePath setWindingRule:NSEvenOddWindingRule];
     
     CGFloat p = (self.doubleValue - self.minValue)/(self.maxValue - self.minValue);
@@ -171,7 +171,7 @@
     if(!self.indeterminate) {
         NSBezierPath *clipPath = [self clipPartOfCircular:outCircleRect percentBegin:0 percentage:p];
         [clipPath addClip];
-        [[NSColor colorWithDeviceRed:100/255.0 green:200/255.0 blue:247/255.0 alpha:0.9] setFill];
+        [[NSColor colorWithDeviceRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.8] setFill];
         [circlePath fill];
     }
     else {
